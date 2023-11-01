@@ -2,8 +2,6 @@
 
 =for comment
 /***************************************************************
-*   Fecha: Octubre 2023
-*   Autor: J. Corredor
 *   Materia: Computacion de Alto Rendimiento
 *   Maestria de Inteligencia Artificial
 *   Pontificia Universidad Javeriana
