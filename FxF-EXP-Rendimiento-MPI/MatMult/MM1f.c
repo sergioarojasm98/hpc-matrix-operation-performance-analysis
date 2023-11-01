@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 
     if (rank == 0)
     {
-        printf("MM1c MatrixSize [Sample arguments ...]\n");
+        printf("MM1f MatrixSize [Sample arguments ...]\n");
     }
 
     N = (int)atof(argv[1]);
@@ -92,15 +92,15 @@ int main(int argc, char **argv)
         NTHR = omp_get_num_threads();
 
 #pragma omp for
-        for (i = startRow; i < endRow; i++)
+        for (i = 0; i < SZ; i++)
             for (j = 0; j < SZ; j++)
             {
                 double *pA, *pB, S;
                 S = 0.0;
-                pA = a + (i * SZ);
-                pB = b + j;
-                for (k = SZ; k > 0; k--, pA++, pB += SZ)
-                    S += (*pA * *pB);
+                pA = a + i * SZ;
+                pB = b + j * SZ;
+                for (k = 0; k < SZ; k++, pA++, pB++)
+                    S += *pA * *pB;
                 c[i * SZ + j] = S;
             }
     }

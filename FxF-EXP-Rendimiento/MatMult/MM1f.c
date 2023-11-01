@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 
     if (argc < 2)
     {
-        printf("MM1c MatrixSize [Sample arguments ...]\n");
+        printf("MM1f MatrixSize [Sample arguments ...]\n");
         return -1;
     }
 
@@ -68,10 +68,10 @@ int main(int argc, char **argv)
             {
                 double *pA, *pB, S;
                 S = 0.0;
-                pA = a + (i * SZ);
-                pB = b + j;
-                for (k = SZ; k > 0; k--, pA++, pB += SZ)
-                    S += (*pA * *pB);
+                pA = a + i * SZ;
+                pB = b + j * SZ;
+                for (k = 0; k < SZ; k++, pA++, pB++)
+                    S += *pA * *pB;
                 c[i * SZ + j] = S;
             }
         Sample_Stop(THR);
