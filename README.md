@@ -7,8 +7,14 @@ make
 
 2- Ve a la carpeta TOOL y asegurate que el script lanzador.pl y el archivo binario sea ejecutable (si aún no lo es) con el comando:
 ```console
-chmod +x /home/sistemas/s_rojas/FxC-EXP-Rendimiento/TOOL/lanzador.pl
+chmod +x /home/sistemas/s_rojas/FxC-EXP-Rendimiento/TOOL/lanzador.pl && \
 chmod +x /home/sistemas/s_rojas/FxC-EXP-Rendimiento/BIN/MM1c
+
+chmod +x /home/sistemas/s_rojas/FxF-EXP-Rendimiento/TOOL/lanzador.pl && \
+chmod +x /home/sistemas/s_rojas/FxF-EXP-Rendimiento/BIN/MM1f
+
+chmod +x /home/sistemas/s_rojas/FxC-EXP-Rendimiento-MPI/TOOL/lanzador.pl && \
+chmod +x /home/sistemas/s_rojas/FxC-EXP-Rendimiento-MPI/BIN/MM1c
 ```
 3- Ejecuta el lanzador con el siguiente comando:
 ```console
