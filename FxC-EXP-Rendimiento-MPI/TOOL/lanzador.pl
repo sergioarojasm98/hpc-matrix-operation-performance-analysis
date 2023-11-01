@@ -13,8 +13,6 @@ chomp($path0);
 $Path = $path0;
 $Path =~ s/\/TOOL$//;
 
-print "$Path \n";
-
 @Ejecutables = ("MM1c");
 @VectorSize = ("100", "200", "400", "600", "800");
 $totalCores = 3;  # 1 manager + 2 workers
@@ -29,8 +27,8 @@ foreach $exe(@Ejecutables) {
       "-MPI".
       "$totalCores";
     for ($i = 0; $i < $numRep; $i++) {
-        system("mpirun -np $totalCores $Path/BIN/$exe $ves 0 2>> $file");
-        print "Ejecutando: $Path/BIN/$exe $ves\n";
+      print "Ejecutando: $Path/BIN/$exe $ves\n";
+      system("mpirun -np $totalCores $Path/BIN/$exe $ves 0 2>> $file");  
     }
   }
 }

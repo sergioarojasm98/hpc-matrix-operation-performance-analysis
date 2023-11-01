@@ -13,8 +13,6 @@ chomp($path0);
 $Path = $path0;
 $Path =~ s/\/TOOL$//;
 
-print "$Path \n";
-
 @Ejecutables = ("MM1f");
 @cores = ("1", "2", "4", "8", "10");
 @VectorSize = ("100", "200", "400", "600", "800");
@@ -30,8 +28,8 @@ foreach $exe(@Ejecutables) {
       "-core".
       "$c";
       for ($i = 0; $i < $numRep; $i++) {
-        system("$Path/BIN/$exe $ves $c 0 2>> $file");
         print "Ejecutando: $Path/BIN/$exe $ves $c\n";
+        system("$Path/BIN/$exe $ves $c 0 2>> $file");
       }
     }
   }
