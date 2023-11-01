@@ -1,12 +1,12 @@
-CC = mpicc                 # Utiliza el compilador MPI
-oT = -fopenmp -O3          # Directivas para OpenMP y optimización
+GCC = mpicc
+oT = -fopenmp -O3 
 
-CFLAGS = -lm               # Librerías, -lm es para la biblioteca matemática
+CFLAGS = -lm 
 
-oL = Otime.c               # Otros archivos fuente
+oL= Otime.c
 
 BINDIR = ../BIN/
-PROGS = $(BINDIR)MM1c
+PROGS = $(BINDIR)MM1c 
 
 all: MM1c
 
@@ -14,4 +14,4 @@ clean:
 	$(RM) $(PROGS)
 
 MM1c:
-	$(CC) $(oT) $(oL) $@.c -o $(BINDIR)$@ $(CFLAGS)
+	$(GCC) $(oT) $(oL) $@.c -o $(BINDIR)$@ $(CFLAGS)

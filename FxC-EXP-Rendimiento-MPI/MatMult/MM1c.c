@@ -1,20 +1,24 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <mpi.h>
 #include <omp.h>
+#include <mpi.h>
+#include "sample.h"
 
 #ifndef MIN
-#define MIN(x,y) ((x)<(y)?(x):(y))
+#define MIN(x, y) ((x) < (y) ? (x) : (y))
 #endif
 
-#define DATA_SZ (1024*1024*64*3)
+#define DATA_SZ (1024 * 1024 * 64 * 3)
 
 static double MEM_CHUNK[DATA_SZ];
 
-void Matrix_Init_col(int SZ, double *a, double *b, double *c) {
+void Matrix_Init_col(int SZ, double *a, double *b, double *c)
+{
     int j, k;
-    for (j = 0; j < SZ; j++) {
-        for (k = 0; k < SZ; k++) {
+    for (j = 0; j < SZ; j++)
+    {
+        for (k = 0; k < SZ; k++)
+        {
             a[j + k * SZ] = 2.0 * (j + k);
             b[j + k * SZ] = 3.2 * (j - k);
             c[j + k * SZ] = 1.0;
@@ -22,78 +26,103 @@ void Matrix_Init_col(int SZ, double *a, double *b, double *c) {
     }
 }
 
-int main(int argc, char **argv) {
-    int N, rank, size;
+int main(int argc, char **argv)
+{
+    int N;
+    int rank, size;
 
     MPI_Init(&argc, &argv);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
     MPI_Comm_size(MPI_COMM_WORLD, &size);
 
-    printf("Process %d out of %d has started.\n", rank, size);
+    omp_set_num_threads(20);
 
-    if (argc < 2) {
-        printf("MM1c MatrixSize\n");
-        MPI_Finalize();
-        return -1;
+    if (rank == 0)
+    {
+        printf("MM1c MatrixSize [Sample arguments ...]\n");
     }
 
     N = (int)atof(argv[1]);
-    printf("Process %d: Matrix size is %d.\n", rank, N);
+    argc--;
+    argv++;
 
-    if (N > 1024 * 10) {
+    if (N > 1024 * 10)
+    {
         printf("Unvalid MatrixSize\n");
-        MPI_Finalize();
         return -1;
     }
 
-    int SZ = N;
+    int startRow = rank * (N / size);
+    int endRow = (rank == size - 1) ? N : startRow + (N / size);
+    int numRows = endRow - startRow;
+
+    Sample_Init(argc, argv);
+
+    int i, j, k;
     double *a, *b, *c;
 
     a = MEM_CHUNK;
-    b = a + SZ * SZ;
-    c = b + SZ * SZ;
+    b = a + N * N;
+    c = b + N * N;
 
-    if (rank == 0) {
-        printf("Process %d: Before Matrix_Init_col.\n", rank);
-        Matrix_Init_col(SZ, a, b, c);
-        printf("Process %d: After Matrix_Init_col and before MPI_Bcast.\n", rank);
-    }
+    if (rank == 0)
+    {
+        // Inicializar matrices en el nodo maestro
+        Matrix_Init_col(N, a, b, c);
 
-    MPI_Bcast(a, SZ * SZ, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    MPI_Bcast(b, SZ * SZ, MPI_DOUBLE, 0, MPI_COMM_WORLD);
-    printf("Process %d: After MPI_Bcast and before matrix multiplication.\n", rank);
-
-    int rows_per_process = SZ / size;
-    int leftover_rows = SZ % size;
-    int start_row = rank * rows_per_process;
-    int end_row = start_row + rows_per_process;
-
-    if (rank < leftover_rows) {
-        start_row += rank;
-        end_row += rank + 1;
-    } else {
-        start_row += leftover_rows;
-        end_row += leftover_rows;
-    }
-
-    for (int i = start_row; i < end_row; i++) {
-       #pragma omp parallel for shared(a, b, c, i, SZ)
-        for (int j = 0; j < SZ; j++) {
-            double S = 0.0;
-            for (int k = 0; k < SZ; k++) {
-                S += a[i * SZ + k] * b[k * SZ + j];
-            }
-            c[i * SZ + j] = S;
+        // Enviar las matrices a y b a los otros nodos
+        for (int p = 1; p < size; p++)
+        {
+            MPI_Send(a, N * N, MPI_DOUBLE, p, 0, MPI_COMM_WORLD);
+            MPI_Send(b, N * N, MPI_DOUBLE, p, 1, MPI_COMM_WORLD);
         }
     }
-    printf("Process %d: After matrix multiplication.\n", rank);
+    else
+    {
+        MPI_Recv(a, N * N, MPI_DOUBLE, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        MPI_Recv(b, N * N, MPI_DOUBLE, 0, 1, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+    }
 
-    // Commenting out the suspicious function for debugging purposes
-    // Sample_End();
+#pragma omp parallel private(i, j, k)
+    {
+        int NTHR, THR, SZ;
 
-    printf("Process %d: Before MPI_Finalize.\n", rank);
+        SZ = N;
+        THR = Sample_PAR_install();
+        NTHR = omp_get_num_threads();
+
+#pragma omp for
+        for (i = startRow; i < endRow; i++)
+            for (j = 0; j < SZ; j++)
+            {
+                double *pA, *pB, S;
+                S = 0.0;
+                pA = a + (i * SZ);
+                pB = b + j;
+                for (k = SZ; k > 0; k--, pA++, pB += SZ)
+                    S += (*pA * *pB);
+                c[i * SZ + j] = S;
+            }
+    }
+
+    if (rank == 0)
+    {
+        // Recopilar las partes de c de otros nodos
+        for (int p = 1; p < size; p++)
+        {
+            int start = p * (N / size);
+            int end = (p == size - 1) ? N : start + (N / size);
+            int num = end - start;
+            MPI_Recv(c + start * N, num * N, MPI_DOUBLE, p, 2, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
+        }
+    }
+    else
+    {
+        MPI_Send(c + startRow * N, numRows * N, MPI_DOUBLE, 0, 2, MPI_COMM_WORLD);
+    }
+
     MPI_Finalize();
-    printf("Process %d: After MPI_Finalize.\n", rank);
 
+    Sample_End();
     return 0;
 }
