@@ -27,10 +27,10 @@ foreach $exe(@Ejecutables) {
       "$ves".
       "-core".
       "$c";
-      system("rm -f $file");
+      system("rm -f $file");	
       for ($i = 0; $i < $numRep; $i++) {
         print "Ejecutando: $Path/BIN/$exe $ves $c\n";
-        system("$Path/BIN/$exe $ves $c 0 >> $file 2>&1");
+	system("$Path/BIN/$exe $ves $c 0 >> $file 2>&1");
       }
     }
   }

@@ -1,0 +1,65 @@
+MM1c MatrixSize [Sample arguments ...]
+Sample parameters: NumberThreads 
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[23138,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+MM1c MatrixSize [Sample arguments ...]
+Sample parameters: NumberThreads 
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[23166,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+MM1c MatrixSize [Sample arguments ...]
+Sample parameters: NumberThreads 
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[21900,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+MM1c MatrixSize [Sample arguments ...]
+Sample parameters: NumberThreads 
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[21912,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------
+MM1c MatrixSize [Sample arguments ...]
+Sample parameters: NumberThreads 
+--------------------------------------------------------------------------
+Primary job  terminated normally, but 1 process returned
+a non-zero exit code. Per user-direction, the job has been aborted.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+mpirun detected that one or more processes exited with non-zero status, thus causing
+the job to be terminated. The first process to do so was:
+
+  Process name: [[21908,1],0]
+  Exit code:    1
+--------------------------------------------------------------------------

@@ -14,8 +14,8 @@ $Path = $path0;
 $Path =~ s/\/TOOL$//;
 
 @Ejecutables = ("MM1c");
-@VectorSize = ("100", "200", "400", "600", "800");
-$totalCores = 3;  # 1 manager + 2 workers
+@VectorSize = ("100", "200", "400", "600", "800", "1000");
+$totalCores = 1;  # 1 manager + 2 workers
 
 foreach $exe(@Ejecutables) {
   foreach $ves(@VectorSize) {
@@ -26,9 +26,10 @@ foreach $exe(@Ejecutables) {
       "$ves".
       "-MPI".
       "$totalCores";
+    system("rm -f $file");
     for ($i = 0; $i < $numRep; $i++) {
       print "Ejecutando: $Path/BIN/$exe $ves\n";
-      system("mpirun -np $totalCores $Path/BIN/$exe $ves 0 2>> $file");  
+      system("mpirun -np $totalCores $Path/BIN/$exe $ves 0 >> $file 2>&1");  
     }
   }
 }

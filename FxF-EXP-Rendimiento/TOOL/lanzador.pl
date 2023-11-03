@@ -14,8 +14,8 @@ $Path = $path0;
 $Path =~ s/\/TOOL$//;
 
 @Ejecutables = ("MM1f");
-@cores = ("1", "2", "4", "8", "10");
-@VectorSize = ("100", "200", "400", "600", "800");
+@cores = ("1", "2", "4", "8", "10", "12", "14", "16", "18", "20");
+@VectorSize = ("100", "200", "400", "600", "800", "1000");
 
 foreach $exe(@Ejecutables) {
   foreach $ves(@VectorSize) {
@@ -27,10 +27,10 @@ foreach $exe(@Ejecutables) {
       "$ves".
       "-core".
       "$c";
-      system("rm -f $file");
+      system("rm -f $file");	
       for ($i = 0; $i < $numRep; $i++) {
         print "Ejecutando: $Path/BIN/$exe $ves $c\n";
-        system("$Path/BIN/$exe $ves $c 0 >> $file 2>&1");
+	system("$Path/BIN/$exe $ves $c 0 >> $file 2>&1");
       }
     }
   }
