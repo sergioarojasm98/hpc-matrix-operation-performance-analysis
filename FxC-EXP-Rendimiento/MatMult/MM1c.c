@@ -47,8 +47,9 @@ int main(int argc, char **argv)
 
     Sample_Init(argc, argv);
 
-#pragma omp parallel
+#pragma omp parallel private(i, j, k)
     {
+        int i, j, k; // Declara las variables aquí
         int NTHR, THR, SZ = N;
         double *a, *b, *c;
 
@@ -70,14 +71,14 @@ int main(int argc, char **argv)
 
 // Bucle de multiplicación de matrices
 #pragma omp for
-        for (int i = 0; i < SZ; i++)
+        for (i = 0; i < SZ; i++)
         {
-            for (int j = 0; j < SZ; j++)
+            for (j = 0; j < SZ; j++)
             {
-                double *pA, *pB, sum = 0.0;
-                pA = a + (i * SZ);
-                pB = b + j;
-                for (int k = 0; k < SZ; k++, pA++, pB += SZ)
+                double *pA = a + (i * SZ);
+                double *pB = b + j;
+                double sum = 0.0;
+                for (k = 0; k < SZ; k++, pA++, pB += SZ)
                 {
                     sum += (*pA * *pB);
                 }
@@ -89,4 +90,6 @@ int main(int argc, char **argv)
     }
 
     Sample_End();
+
+    return EXIT_SUCCESS;
 }

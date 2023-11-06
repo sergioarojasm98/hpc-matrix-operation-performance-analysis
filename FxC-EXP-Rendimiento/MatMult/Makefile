@@ -1,5 +1,5 @@
 GCC = gcc
-oT = -fopenmp -O3 
+oT = -fopenmp -O3 -std=c99   # Añadido -std=c99 para permitir declaraciones en bucles for
 
 CFLAGS = -lm 
 
