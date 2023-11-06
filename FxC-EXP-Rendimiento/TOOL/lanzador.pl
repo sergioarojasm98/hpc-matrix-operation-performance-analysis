@@ -14,8 +14,8 @@ $Path = $path0;
 $Path =~ s/\/TOOL$//;
 
 @Ejecutables = ("MM1c");
-@cores = ("1", "2", "4", "8", "10", "12", "14", "16", "18", "20");
-@VectorSize = ("100", "200", "400", "600", "800", "1000");
+@cores = ("1", "2"); # Ya que  solo tienes 2 núcleos
+@VectorSize = ("100", "200", "400");
 
 foreach $exe(@Ejecutables) {
   foreach $ves(@VectorSize) {

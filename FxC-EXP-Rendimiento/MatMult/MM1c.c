@@ -15,7 +15,7 @@ void Matrix_Init_col(int SZ, double *a, double *b, double *c)
 {
     int j, k;
     for (k = 0; k < SZ; k++)
-    { // Se agrega este bucle para iterar sobre 'k'
+    {
         for (j = 0; j < SZ; j++)
         {
             a[j + k * SZ] = 2.0 * (j + k);
@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     if (argc < 2)
     {
         printf("MM1c MatrixSize [Sample arguments ...]\n");
-        return -1;
+        exit(EXIT_FAILURE);
     }
 
     N = (int)atof(argv[1]);
@@ -41,43 +41,52 @@ int main(int argc, char **argv)
 
     if (N > 1024 * 10)
     {
-        printf("Unvalid MatrixSize\n");
-        return -1;
+        printf("Invalid MatrixSize\n");
+        exit(EXIT_FAILURE);
     }
 
     Sample_Init(argc, argv);
 
 #pragma omp parallel
     {
-        int NTHR, THR, SZ;
-        int i, j, k;
+        int NTHR, THR, SZ = N;
         double *a, *b, *c;
-
-        SZ = N;
-        THR = Sample_PAR_install();
-        NTHR = omp_get_num_threads();
 
         a = MEM_CHUNK;
         b = a + SZ * SZ;
         c = b + SZ * SZ;
 
+// El hilo maestro inicializa las matrices
 #pragma omp master
-        Matrix_Init_col(SZ, a, b, c);
+        {
+            Matrix_Init_col(SZ, a, b, c);
+        }
+
+// Barrera para asegurarse de que la inicialización se ha completado
+#pragma omp barrier
+
+        THR = Sample_PAR_install();
         Sample_Start(THR);
 
+// Bucle de multiplicación de matrices
 #pragma omp for
-        for (i = 0; i < SZ; i++)
-            for (j = 0; j < SZ; j++)
+        for (int i = 0; i < SZ; i++)
+        {
+            for (int j = 0; j < SZ; j++)
             {
-                double *pA, *pB, S;
-                S = 0.0;
+                double *pA, *pB, sum = 0.0;
                 pA = a + (i * SZ);
                 pB = b + j;
-                for (k = SZ; k > 0; k--, pA++, pB += SZ)
-                    S += (*pA * *pB);
-                c[i * SZ + j] = S;
+                for (int k = 0; k < SZ; k++, pA++, pB += SZ)
+                {
+                    sum += (*pA * *pB);
+                }
+                c[i * SZ + j] = sum;
             }
+        }
+
         Sample_Stop(THR);
     }
+
     Sample_End();
 }
