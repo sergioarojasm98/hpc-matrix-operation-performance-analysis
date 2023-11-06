@@ -16,8 +16,8 @@ chmod +x /home/s_rojas/project/FxF-EXP-Rendimiento/BIN/MM1f
 chmod +x /home/s_rojas/project/FxC-EXP-Rendimiento-MPI/TOOL/lanzador.pl && \
 chmod +x /home/s_rojas/project/FxC-EXP-Rendimiento-MPI/BIN/MM1c
 
-chmod +x /home/s_rojas/project/FxC-EXP-Rendimiento-MPI/TOOL/lanzador.pl && \
-chmod +x /home/s_rojas/project/FxC-EXP-Rendimiento-MPI/BIN/MM1c
+chmod +x /home/s_rojas/project/FxF-EXP-Rendimiento-MPI/TOOL/lanzador.pl && \
+chmod +x /home/s_rojas/project/FxF-EXP-Rendimiento-MPI/BIN/MM1c
 ```
 3- Ejecuta el lanzador con el siguiente comando:
 ```console
