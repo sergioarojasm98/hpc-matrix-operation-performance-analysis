@@ -15,9 +15,9 @@ static double MEM_CHUNK[DATA_SZ];
 void Matrix_Init_col(int SZ, double *a, double *b, double *c)
 {
     int j, k;
-    for (j = 0; j < SZ; j++)
-    {
-        for (k = 0; k < SZ; k++)
+    for (k = 0; k < SZ; k++)
+    { // Se agrega este bucle para iterar sobre 'k'
+        for (j = 0; j < SZ; j++)
         {
             a[j + k * SZ] = 2.0 * (j + k);
             b[j + k * SZ] = 3.2 * (j - k);
