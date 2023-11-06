@@ -6,12 +6,12 @@ CFLAGS = -lm
 oL= Otime.c
 
 BINDIR = ../BIN/
-PROGS = $(BINDIR)MM1c 
+PROGS = $(BINDIR)MM1f 
 
-all: MM1c
+all: MM1f
 
 clean:
 	$(RM) $(PROGS)
 
-MM1c:
+MM1f:
 	$(GCC) $(oT) $(oL) $@.c -o $(BINDIR)$@ $(CFLAGS)
