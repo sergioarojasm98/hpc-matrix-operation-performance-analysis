@@ -47,9 +47,11 @@ int main(int argc, char **argv)
 
     Sample_Init(argc, argv);
 
-#pragma omp parallel private(i, j, k)
+    // Declarar las variables i, j, k aquí no funcionaría ya que deben estar en el scope del bloque paralelo.
+
+#pragma omp parallel
     {
-        int i, j, k; // Declara las variables aquí
+        int i, j, k; // Declarar las variables aquí y hacerlas privadas para cada hilo.
         int NTHR, THR, SZ = N;
         double *a, *b, *c;
 
@@ -57,20 +59,20 @@ int main(int argc, char **argv)
         b = a + SZ * SZ;
         c = b + SZ * SZ;
 
-// El hilo maestro inicializa las matrices
-#pragma omp master
+        // El hilo maestro inicializa las matrices
+        #pragma omp master
         {
             Matrix_Init_col(SZ, a, b, c);
         }
 
-// Barrera para asegurarse de que la inicialización se ha completado
-#pragma omp barrier
+        // Barrera para asegurarse de que la inicialización se ha completado
+        #pragma omp barrier
 
         THR = Sample_PAR_install();
         Sample_Start(THR);
 
-// Bucle de multiplicación de matrices
-#pragma omp for
+        // Bucle de multiplicación de matrices
+        #pragma omp for private(i, j, k) // Asegúrese de que i, j y k sean privados para cada hilo en el bucle for.
         for (i = 0; i < SZ; i++)
         {
             for (j = 0; j < SZ; j++)
