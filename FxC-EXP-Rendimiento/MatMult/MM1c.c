@@ -59,32 +59,32 @@ int main(int argc, char **argv)
         b = a + SZ * SZ;
         c = b + SZ * SZ;
 
-        // El hilo maestro inicializa las matrices
-        #pragma omp master
+// El hilo maestro inicializa las matrices
+#pragma omp master
         {
             Matrix_Init_col(SZ, a, b, c);
         }
 
-        // Barrera para asegurarse de que la inicialización se ha completado
-        #pragma omp barrier
+// Barrera para asegurarse de que la inicialización se ha completado
+#pragma omp barrier
 
         THR = Sample_PAR_install();
         Sample_Start(THR);
 
-        // Bucle de multiplicación de matrices
-        #pragma omp for private(i, j, k) // Asegúrese de que i, j y k sean privados para cada hilo en el bucle for.
+// Bucle de multiplicación de matrices
+#pragma omp for private(i, j, k) // Asegúrese de que i, j y k sean privados para cada hilo en el bucle for.
         for (i = 0; i < SZ; i++)
         {
             for (j = 0; j < SZ; j++)
             {
                 double *pA = a + (i * SZ);
                 double *pB = b + j;
-                double sum = 0.0;
+                double S = 0.0;
                 for (k = 0; k < SZ; k++, pA++, pB += SZ)
                 {
-                    sum += (*pA * *pB);
+                    S += (*pA * *pB);
                 }
-                c[i * SZ + j] = sum;
+                c[i * SZ + j] = S;
             }
         }
 
