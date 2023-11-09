@@ -14,8 +14,8 @@ $Path = $path0;
 $Path =~ s/\/TOOL$//;
 
 @Ejecutables = ("MM1f");
-@cores = ("1", "2"); # Ya que  solo tienes 2 núcleos
-@VectorSize = ("100", "200", "300", "400", "500", "600", "700", "800");
+@cores = (1..10); # Apple M1 Max @ 3.20GHz
+@VectorSize = ("100", "200", "300", "400", "500", "600", "700", "800", "900", "1000");
 
 foreach $exe(@Ejecutables) {
   foreach $ves(@VectorSize) {
