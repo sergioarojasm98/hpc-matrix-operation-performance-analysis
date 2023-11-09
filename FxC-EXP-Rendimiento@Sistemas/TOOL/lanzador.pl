@@ -15,7 +15,7 @@ $Path =~ s/\/TOOL$//;
 
 @Ejecutables = ("MM1c");
 @cores = (1..20); # Intel(R) Xeon(R) W-1290 CPU @ 3.20GHz
-@VectorSize = ("100", "200", "300", "400", "500", "600", "700", "800");
+@VectorSize = ("100", "200", "300", "400", "500", "600", "700", "800", "900", "1000");
 
 foreach $exe(@Ejecutables) {
   foreach $ves(@VectorSize) {
