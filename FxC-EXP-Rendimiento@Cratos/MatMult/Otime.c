@@ -5,7 +5,7 @@
 #include <sys/time.h>
 #include <stdio.h>
 
-#define MAX_THREADS 20
+#define MAX_THREADS 40
 
 struct timeval start[MAX_THREADS];
 struct timeval stop[MAX_THREADS];
