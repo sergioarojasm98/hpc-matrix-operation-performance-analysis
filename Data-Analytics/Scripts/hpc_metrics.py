@@ -6,17 +6,17 @@ from collections import defaultdict
 # Función para calcular el promedio de los promedios y las métricas de rendimiento
 def calcular_metricas(tiempos_base, datos):
     resultados_con_metricas = []
-    for tamaño, datos_cores in datos.items():
+    for matrix_size, datos_cores in datos.items():
         for cores, tiempos in datos_cores.items():
             promedio = sum(tiempos) / len(tiempos)
             if cores == "1":  # No calculamos métricas para 1 core
                 continue
-            speedup = tiempos_base[tamaño] / promedio
+            speedup = tiempos_base[matrix_size] / promedio
             eficiencia = speedup / int(cores)
             resultados_con_metricas.append(
                 {
                     "TotalCores": cores,
-                    "MatrixSize": tamaño,
+                    "MatrixSize": matrix_size,
                     "Time": promedio,
                     "Speedup": speedup,
                     "Eficiencia": eficiencia,
@@ -42,11 +42,11 @@ with open(os.path.join(directorio, "resultados.csv"), mode="r") as archivo_base:
     lector_csv = csv.DictReader(archivo_base)
     for fila in lector_csv:
         cores = fila["TotalCores"]
-        tamaño = fila["MatrixSize"]
+        matrix_size = fila["MatrixSize"]
         tiempo = float(fila["Time"])
-        datos_agrupados[tamaño][cores].append(tiempo)
+        datos_agrupados[matrix_size][cores].append(tiempo)
         if cores == "1":  # Guardamos el tiempo base para 1 core
-            tiempos_base[tamaño] = tiempo
+            tiempos_base[matrix_size] = tiempo
 
 # Calcula las métricas de rendimiento
 resultados_con_metricas = calcular_metricas(tiempos_base, datos_agrupados)
