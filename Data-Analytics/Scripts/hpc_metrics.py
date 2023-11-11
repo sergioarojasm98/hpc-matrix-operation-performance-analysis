@@ -9,8 +9,6 @@ def calcular_metricas(tiempos_base, datos):
     for matrix_size, datos_cores in datos.items():
         for cores, tiempos in datos_cores.items():
             promedio = sum(tiempos) / len(tiempos)
-            if cores == "1":  # No calculamos métricas para 1 core
-                continue
             speedup = tiempos_base[matrix_size] / promedio
             eficiencia = speedup / int(cores)
             resultados_con_metricas.append(
