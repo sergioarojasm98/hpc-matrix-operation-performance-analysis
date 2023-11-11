@@ -20,7 +20,7 @@ void Matrix_Init_col(int SZ, double *a, double *b, double *c)
         {
             a[j + k * SZ] = 2.0 * (j + k);
             b[j + k * SZ] = 3.2 * (j - k);
-            c[j + k * SZ] = 1.0;
+            c[j + k * SZ] = 0.0;
         }
     }
 }
@@ -79,12 +79,10 @@ int main(int argc, char **argv)
             {
                 double *pA = a + (i * SZ);
                 double *pB = b + j;
-                double S = 0.0;
                 for (k = 0; k < SZ; k++, pA++, pB += SZ)
                 {
-                    S += (*pA * *pB);
+                    c[i * SZ + j] += *pA * *pB;
                 }
-                c[i * SZ + j] = S;
             }
         }
 
@@ -92,6 +90,5 @@ int main(int argc, char **argv)
     }
 
     Sample_End();
-
     return EXIT_SUCCESS;
 }
