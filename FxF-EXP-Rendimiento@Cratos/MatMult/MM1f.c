@@ -79,13 +79,13 @@ int main(int argc, char **argv)
             {
                 double *pA = a + j + (i * SZ);
                 double *pB = b + (j * SZ);
-                for (k = 0; k < SZ; k++, pB ++)
+                for (k = 0; k < SZ; k++, pB++)
                 {
                     c[i * SZ + k] += *pA * *pB;
                 }
             }
         }
-        
+
         Sample_Stop(THR);
     }
 
