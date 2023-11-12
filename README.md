@@ -46,4 +46,10 @@ rm -rf /home/srojas/HPC/*
 ```console
 scp -r /home/s_rojas/project/* srojas@10.34.1.43:/home/srojas/HPC/
 ```
+# Como funciona MM1x.c
 
+Este código implementa una multiplicación de matrices utilizando programación paralela con OpenMP. Incluye la inicialización de matrices en el hilo maestro y luego realiza la multiplicación de las matrices en paralelo, utilizando cada hilo para trabajar en una parte de la matriz. Utiliza las funciones definidas en sample.h y Otime.c para medir y registrar el rendimiento de cada hilo durante la operación, ofreciendo una visión detallada del tiempo de ejecución de cada parte del proceso paralelizado. La barrera de OpenMP asegura que todos los hilos comiencen la multiplicación solo después de que las matrices estén completamente inicializadas.
+
+# Como funciona Otime.c
+
+Este código es parte de una implementación que mide el rendimiento de los hilos en un entorno de programación paralela con OpenMP. Utiliza estructuras timeval para registrar el tiempo de inicio y finalización de operaciones en cada hilo. La finalidad principal es medir el tiempo que tardan los hilos en ejecutar secciones específicas del código, lo cual es crucial para la optimización y el análisis del rendimiento en aplicaciones paralelas. Las funciones proporcionan un marco para iniciar y detener el muestreo, configurar el número de hilos y mostrar los resultados de los tiempos de ejecución al finalizar el programa.

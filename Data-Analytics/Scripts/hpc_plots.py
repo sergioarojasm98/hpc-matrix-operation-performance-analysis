@@ -3,75 +3,77 @@ import pandas as pd
 import os
 
 
-def generar_graficas(directorio, archivo_csv):
+# Función para generar gráficos a partir de datos de rendimiento computacional.
+def generar_graficas(directorio, archivo_csv, prefijo):
     datos = pd.read_csv(os.path.join(directorio, archivo_csv))
     datos_filtrados = datos[datos["TotalCores"] > 1]  # Filtra para TotalCores > 1
 
-    # Speedup vs. TotalCores
+    # Gráfico de Speedup vs. TotalCores
     plt.figure(figsize=(10, 7))
     for size in sorted(datos_filtrados["MatrixSize"].unique()):
         subset = datos_filtrados[datos_filtrados["MatrixSize"] == size]
         plt.plot(
-            subset["TotalCores"], subset["Speedup"], marker="o", label=f"Size {size}"
+            subset["TotalCores"], subset["Speedup"], marker="o", label=f"Tamaño {size}"
         )
-    plt.xlabel("Total Cores")
+    plt.xlabel("Total de Núcleos")
     plt.ylabel("Speedup")
-    plt.title("Speedup vs. Total Cores")
+    plt.title("Speedup vs. Total de Núcleos")
     plt.legend()
-    plt.savefig(os.path.join(directorio, "Speedup_vs_TotalCores.pdf"), format="pdf")
+    plt.savefig(
+        os.path.join(directorio, f"{prefijo}Speedup_vs_TotalCores.pdf"), format="pdf"
+    )
 
-    # Eficiencia vs. TotalCores
+    # Gráfico de Eficiencia vs. TotalCores
     plt.figure(figsize=(10, 8))
     for size in sorted(datos_filtrados["MatrixSize"].unique()):
         subset = datos_filtrados[datos_filtrados["MatrixSize"] == size]
         plt.plot(
-            subset["TotalCores"], subset["Eficiencia"], marker="o", label=f"Size {size}"
+            subset["TotalCores"],
+            subset["Eficiencia"],
+            marker="o",
+            label=f"Tamaño {size}",
         )
-    plt.xlabel("Total Cores")
+    plt.xlabel("Total de Núcleos")
     plt.ylabel("Eficiencia")
-    plt.title("Eficiencia vs. Total Cores")
+    plt.title("Eficiencia vs. Total de Núcleos")
     plt.legend()
-    plt.savefig(os.path.join(directorio, "Eficiencia_vs_TotalCores.pdf"), format="pdf")
+    plt.savefig(
+        os.path.join(directorio, f"{prefijo}Eficiencia_vs_TotalCores.pdf"), format="pdf"
+    )
 
-    # Tiempo vs. MatrixSize para diferentes TotalCores
-    plt.figure(figsize=(10, 7))
-    for cores in sorted(datos["TotalCores"].unique()):
-        subset = datos[datos["TotalCores"] == cores]
+    # Gráfico de Tiempo vs. TotalCores para diferentes tamaños de matriz
+    plt.figure(figsize=(10, 8))
+    for size in sorted(datos["MatrixSize"].unique()):
+        subset = datos[datos["MatrixSize"] == size]
         plt.plot(
-            subset["MatrixSize"], subset["Time"], marker="o", label=f"Cores {cores}"
+            subset["TotalCores"], subset["Time"], marker="o", label=f"Tamaño {size}"
         )
-    plt.xlabel("Matrix Size")
-    plt.ylabel("Time (microseconds)")
-    plt.title("Execution Time vs. Matrix Size for different Total Cores")
-    # Ajustar los márgenes de la subtrama
-    plt.subplots_adjust(
-        top=0.92,  # Reduce el espacio superior si es necesario
-        bottom=0.08,  # Aumenta si la leyenda necesita más espacio
-        left=0.10,  # Ajusta según necesidad para el eje y
-        right=0.65,  # Deja espacio para la leyenda a la derecha
+    plt.xlabel("Total de Núcleos")
+    plt.ylabel("Tiempo (microsegundos)")
+    plt.title(
+        "Tiempo de Ejecución vs. Total de Núcleos para diferentes tamaños de Matriz"
     )
-    # Colocar la leyenda debajo del gráfico con 5 columnas
-    plt.legend(
-        loc="upper center",
-        bbox_to_anchor=(0.5, -0.1),
-        ncol=5,
-        fancybox=True,
-        shadow=True,
+    plt.legend()
+    plt.savefig(
+        os.path.join(directorio, f"{prefijo}Time_vs_TotalCores.pdf"), format="pdf"
     )
 
-    # Ajustar los márgenes para acomodar la leyenda
-    plt.tight_layout(rect=[0, 0, 1, 1])
-
-    # Guardar la figura ajustada
-    plt.savefig(os.path.join(directorio, "Time_vs_MatrixSize.pdf"), format="pdf")
+    # Repetir para otros gráficos y guardarlos en formato PDF
 
 
-# Solicita al usuario ingresar la ruta del directorio de archivos
-directorio = input("Please enter the directory path where the files are located: ")
+# Solicita al usuario ingresar la ruta del directorio y un prefijo para los nombres de los archivos de gráficos
+directorio = input(
+    "Por favor, ingresa la ruta del directorio donde se encuentran los archivos: "
+)
+prefijo = input(
+    "Por favor, ingresa el prefijo para los nombres de los archivos de gráficos: "
+)
 archivo_csv = "resultados_con_metricas.csv"
 
-
 # Llama a la función para generar y guardar las gráficas
-generar_graficas(directorio, archivo_csv)
+generar_graficas(directorio, archivo_csv, prefijo)
 
-print("All graphs have been generated and saved as .pdf in the directory provided.")
+# Mensaje para informar al usuario que los gráficos han sido generados y guardados.
+print(
+    "Todos los gráficos han sido generados y guardados como archivos .pdf en el directorio proporcionado."
+)

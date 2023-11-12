@@ -2,7 +2,7 @@ import csv
 import os
 from collections import defaultdict
 
-# Solicita al usuario ingresar la ruta del directorio de archivos
+# Solicita al usuario ingresar la ruta del directorio donde se encuentran los archivos
 directorio = input("Ingresa la ruta del directorio donde se encuentran los archivos: ")
 
 # Verifica si el directorio existe
@@ -17,14 +17,14 @@ datos_agrupados = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
 for nombre_archivo in os.listdir(directorio):
     if not nombre_archivo.startswith(
         "MM1"
-    ):  # Modificado para aceptar archivos que comiencen con MM1
+    ):  # Solo procesa archivos que comiencen con MM1
         print(f"Ignorando archivo: {nombre_archivo}")
         continue  # Ignora archivos que no sigan la convención de nomenclatura
 
     print(f"Procesando archivo: {nombre_archivo}")
     # Extrae información del nombre del archivo
     partes_nombre = nombre_archivo.split("-")
-    total_cores = partes_nombre[-1].replace("core", "")  # Número total de cores
+    total_cores = partes_nombre[-1].replace("core", "")  # Número total de núcleos
     tamaño = partes_nombre[1].replace("Size", "")  # Tamaño de la matriz
 
     # Lee el contenido del archivo y extrae los tiempos
@@ -50,13 +50,13 @@ for total_cores, matrices in datos_agrupados.items():
                 }
             )
 
-# Ordena los datos primero por TotalCores, luego por MatrixSize y finalmente por SingleCore, todos en orden ascendente
+# Ordena los datos por TotalCores, MatrixSize y SingleCore en orden ascendente
 datos_csv.sort(key=lambda x: (x["TotalCores"], x["MatrixSize"], x["SingleCore"]))
 
 # Ruta donde se guardará el archivo CSV
 ruta_csv = os.path.join(directorio, "resultados.csv")
 
-# Escribe los datos en un archivo CSV en la misma ruta de entrada
+# Escribe los datos en un archivo CSV en la misma ruta
 with open(ruta_csv, mode="w", newline="") as archivo_csv:
     campos = ["TotalCores", "MatrixSize", "SingleCore", "Time"]
     escritor_csv = csv.DictWriter(archivo_csv, fieldnames=campos)
@@ -68,4 +68,5 @@ with open(ruta_csv, mode="w", newline="") as archivo_csv:
     for fila in datos_csv:
         escritor_csv.writerow(fila)
 
+# Mensaje de confirmación al guardar los datos
 print(f"Los datos se han guardado en '{ruta_csv}'.")
