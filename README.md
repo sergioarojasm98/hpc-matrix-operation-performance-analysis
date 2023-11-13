@@ -2,7 +2,7 @@
 
 1- Ve a la carpeta MatMult y ejecuta el siguiente comando para compilar el programa MM1c usando el Makefile:
 ```console
-make
+make all
 ```
 
 2- Ve a la carpeta TOOL y asegurate que el script lanzador.pl y el archivo binario sea ejecutable (si aún no lo es) con el comando:
