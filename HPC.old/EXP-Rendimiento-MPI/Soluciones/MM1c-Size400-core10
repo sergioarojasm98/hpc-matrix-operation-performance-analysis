@@ -1,0 +1,310 @@
+Process 6 out of 10 has started.
+Process 6: Matrix size is 400.
+Process 3 out of 10 has started.
+Process 3: Matrix size is 400.
+Process 9 out of 10 has started.
+Process 9: Matrix size is 400.
+Process 4 out of 10 has started.
+Process 4: Matrix size is 400.
+Process 1 out of 10 has started.
+Process 1: Matrix size is 400.
+Process 2 out of 10 has started.
+Process 2: Matrix size is 400.
+Process 5 out of 10 has started.
+Process 5: Matrix size is 400.
+Process 8 out of 10 has started.
+Process 8: Matrix size is 400.
+Process 0 out of 10 has started.
+Process 0: Matrix size is 400.
+Process 0: Before Matrix_Init_col.
+Process 7 out of 10 has started.
+Process 7: Matrix size is 400.
+Process 0: After Matrix_Init_col and before MPI_Bcast.
+Process 9: After MPI_Bcast and before matrix multiplication.
+Process 0: After MPI_Bcast and before matrix multiplication.
+Process 8: After MPI_Bcast and before matrix multiplication.
+Process 1: After MPI_Bcast and before matrix multiplication.
+Process 2: After MPI_Bcast and before matrix multiplication.
+Process 7: After MPI_Bcast and before matrix multiplication.
+Process 6: After MPI_Bcast and before matrix multiplication.
+Process 5: After MPI_Bcast and before matrix multiplication.
+Process 3: After MPI_Bcast and before matrix multiplication.
+Process 4: After MPI_Bcast and before matrix multiplication.
+Process 8: After matrix multiplication.
+Process 8: Before MPI_Finalize.
+Process 9: After matrix multiplication.
+Process 9: Before MPI_Finalize.
+Process 6: After matrix multiplication.
+Process 6: Before MPI_Finalize.
+Process 7: After matrix multiplication.
+Process 7: Before MPI_Finalize.
+Process 0: After matrix multiplication.
+Process 0: Before MPI_Finalize.
+Process 1: After matrix multiplication.
+Process 1: Before MPI_Finalize.
+Process 5: After matrix multiplication.
+Process 5: Before MPI_Finalize.
+Process 4: After matrix multiplication.
+Process 4: Before MPI_Finalize.
+Process 2: After matrix multiplication.
+Process 2: Before MPI_Finalize.
+Process 3: After matrix multiplication.
+Process 3: Before MPI_Finalize.
+Process 1: After MPI_Finalize.
+Process 8: After MPI_Finalize.
+Process 6: After MPI_Finalize.
+Process 7: After MPI_Finalize.
+Process 5: After MPI_Finalize.
+Process 9: After MPI_Finalize.
+Process 0: After MPI_Finalize.
+Process 4: After MPI_Finalize.
+Process 3: After MPI_Finalize.
+Process 2: After MPI_Finalize.
+Process 9 out of 10 has started.
+Process 9: Matrix size is 400.
+Process 0 out of 10 has started.
+Process 0: Matrix size is 400.
+Process 0: Before Matrix_Init_col.
+Process 1 out of 10 has started.
+Process 1: Matrix size is 400.
+Process 3 out of 10 has started.
+Process 3: Matrix size is 400.
+Process 8 out of 10 has started.
+Process 8: Matrix size is 400.
+Process 5 out of 10 has started.
+Process 5: Matrix size is 400.
+Process 6 out of 10 has started.
+Process 6: Matrix size is 400.
+Process 7 out of 10 has started.
+Process 7: Matrix size is 400.
+Process 2 out of 10 has started.
+Process 2: Matrix size is 400.
+Process 4 out of 10 has started.
+Process 4: Matrix size is 400.
+Process 0: After Matrix_Init_col and before MPI_Bcast.
+Process 0: After MPI_Bcast and before matrix multiplication.
+Process 9: After MPI_Bcast and before matrix multiplication.
+Process 7: After MPI_Bcast and before matrix multiplication.
+Process 1: After MPI_Bcast and before matrix multiplication.
+Process 2: After MPI_Bcast and before matrix multiplication.
+Process 8: After MPI_Bcast and before matrix multiplication.
+Process 5: After MPI_Bcast and before matrix multiplication.
+Process 6: After MPI_Bcast and before matrix multiplication.
+Process 3: After MPI_Bcast and before matrix multiplication.
+Process 4: After MPI_Bcast and before matrix multiplication.
+Process 8: After matrix multiplication.
+Process 8: Before MPI_Finalize.
+Process 2: After matrix multiplication.
+Process 2: Before MPI_Finalize.
+Process 5: After matrix multiplication.
+Process 5: Before MPI_Finalize.
+Process 1: After matrix multiplication.
+Process 1: Before MPI_Finalize.
+Process 4: After matrix multiplication.
+Process 4: Before MPI_Finalize.
+Process 9: After matrix multiplication.
+Process 9: Before MPI_Finalize.
+Process 6: After matrix multiplication.
+Process 6: Before MPI_Finalize.
+Process 7: After matrix multiplication.
+Process 7: Before MPI_Finalize.
+Process 0: After matrix multiplication.
+Process 0: Before MPI_Finalize.
+Process 3: After matrix multiplication.
+Process 3: Before MPI_Finalize.
+Process 4: After MPI_Finalize.
+Process 5: After MPI_Finalize.
+Process 9: After MPI_Finalize.
+Process 1: After MPI_Finalize.
+Process 6: After MPI_Finalize.
+Process 8: After MPI_Finalize.
+Process 2: After MPI_Finalize.
+Process 7: After MPI_Finalize.
+Process 0: After MPI_Finalize.
+Process 3: After MPI_Finalize.
+Process 1 out of 10 has started.
+Process 1: Matrix size is 400.
+Process 2 out of 10 has started.
+Process 2: Matrix size is 400.
+Process 9 out of 10 has started.
+Process 9: Matrix size is 400.
+Process 6 out of 10 has started.
+Process 6: Matrix size is 400.
+Process 8 out of 10 has started.
+Process 8: Matrix size is 400.
+Process 5 out of 10 has started.
+Process 5: Matrix size is 400.
+Process 4 out of 10 has started.
+Process 4: Matrix size is 400.
+Process 0 out of 10 has started.
+Process 0: Matrix size is 400.
+Process 0: Before Matrix_Init_col.
+Process 7 out of 10 has started.
+Process 7: Matrix size is 400.
+Process 3 out of 10 has started.
+Process 3: Matrix size is 400.
+Process 0: After Matrix_Init_col and before MPI_Bcast.
+Process 9: After MPI_Bcast and before matrix multiplication.
+Process 0: After MPI_Bcast and before matrix multiplication.
+Process 7: After MPI_Bcast and before matrix multiplication.
+Process 8: After MPI_Bcast and before matrix multiplication.
+Process 2: After MPI_Bcast and before matrix multiplication.
+Process 1: After MPI_Bcast and before matrix multiplication.
+Process 5: After MPI_Bcast and before matrix multiplication.
+Process 3: After MPI_Bcast and before matrix multiplication.
+Process 6: After MPI_Bcast and before matrix multiplication.
+Process 4: After MPI_Bcast and before matrix multiplication.
+Process 8: After matrix multiplication.
+Process 8: Before MPI_Finalize.
+Process 5: After matrix multiplication.
+Process 5: Before MPI_Finalize.
+Process 6: After matrix multiplication.
+Process 6: Before MPI_Finalize.
+Process 1: After matrix multiplication.
+Process 1: Before MPI_Finalize.
+Process 9: After matrix multiplication.
+Process 9: Before MPI_Finalize.
+Process 4: After matrix multiplication.
+Process 4: Before MPI_Finalize.
+Process 0: After matrix multiplication.
+Process 0: Before MPI_Finalize.
+Process 2: After matrix multiplication.
+Process 2: Before MPI_Finalize.
+Process 7: After matrix multiplication.
+Process 7: Before MPI_Finalize.
+Process 3: After matrix multiplication.
+Process 3: Before MPI_Finalize.
+Process 9: After MPI_Finalize.
+Process 5: After MPI_Finalize.
+Process 0: After MPI_Finalize.
+Process 4: After MPI_Finalize.
+Process 6: After MPI_Finalize.
+Process 2: After MPI_Finalize.
+Process 7: After MPI_Finalize.
+Process 1: After MPI_Finalize.
+Process 8: After MPI_Finalize.
+Process 3: After MPI_Finalize.
+Process 2 out of 10 has started.
+Process 2: Matrix size is 400.
+Process 4 out of 10 has started.
+Process 4: Matrix size is 400.
+Process 8 out of 10 has started.
+Process 8: Matrix size is 400.
+Process 7 out of 10 has started.
+Process 7: Matrix size is 400.
+Process 9 out of 10 has started.
+Process 9: Matrix size is 400.
+Process 6 out of 10 has started.
+Process 6: Matrix size is 400.
+Process 0 out of 10 has started.
+Process 0: Matrix size is 400.
+Process 0: Before Matrix_Init_col.
+Process 3 out of 10 has started.
+Process 3: Matrix size is 400.
+Process 5 out of 10 has started.
+Process 5: Matrix size is 400.
+Process 1 out of 10 has started.
+Process 1: Matrix size is 400.
+Process 0: After Matrix_Init_col and before MPI_Bcast.
+Process 0: After MPI_Bcast and before matrix multiplication.
+Process 9: After MPI_Bcast and before matrix multiplication.
+Process 1: After MPI_Bcast and before matrix multiplication.
+Process 2: After MPI_Bcast and before matrix multiplication.
+Process 6: After MPI_Bcast and before matrix multiplication.
+Process 5: After MPI_Bcast and before matrix multiplication.
+Process 3: After MPI_Bcast and before matrix multiplication.
+Process 4: After MPI_Bcast and before matrix multiplication.
+Process 7: After MPI_Bcast and before matrix multiplication.
+Process 8: After MPI_Bcast and before matrix multiplication.
+Process 9: After matrix multiplication.
+Process 9: Before MPI_Finalize.
+Process 0: After matrix multiplication.
+Process 0: Before MPI_Finalize.
+Process 8: After matrix multiplication.
+Process 8: Before MPI_Finalize.
+Process 2: After matrix multiplication.
+Process 2: Before MPI_Finalize.
+Process 5: After matrix multiplication.
+Process 5: Before MPI_Finalize.
+Process 7: After matrix multiplication.
+Process 7: Before MPI_Finalize.
+Process 3: After matrix multiplication.
+Process 3: Before MPI_Finalize.
+Process 4: After matrix multiplication.
+Process 4: Before MPI_Finalize.
+Process 6: After matrix multiplication.
+Process 6: Before MPI_Finalize.
+Process 1: After matrix multiplication.
+Process 1: Before MPI_Finalize.
+Process 0: After MPI_Finalize.
+Process 8: After MPI_Finalize.
+Process 7: After MPI_Finalize.
+Process 2: After MPI_Finalize.
+Process 9: After MPI_Finalize.
+Process 5: After MPI_Finalize.
+Process 6: After MPI_Finalize.
+Process 1: After MPI_Finalize.
+Process 3: After MPI_Finalize.
+Process 4: After MPI_Finalize.
+Process 5 out of 10 has started.
+Process 5: Matrix size is 400.
+Process 0 out of 10 has started.
+Process 0: Matrix size is 400.
+Process 0: Before Matrix_Init_col.
+Process 1 out of 10 has started.
+Process 1: Matrix size is 400.
+Process 6 out of 10 has started.
+Process 6: Matrix size is 400.
+Process 3 out of 10 has started.
+Process 3: Matrix size is 400.
+Process 7 out of 10 has started.
+Process 7: Matrix size is 400.
+Process 2 out of 10 has started.
+Process 2: Matrix size is 400.
+Process 4 out of 10 has started.
+Process 4: Matrix size is 400.
+Process 9 out of 10 has started.
+Process 9: Matrix size is 400.
+Process 8 out of 10 has started.
+Process 8: Matrix size is 400.
+Process 0: After Matrix_Init_col and before MPI_Bcast.
+Process 9: After MPI_Bcast and before matrix multiplication.
+Process 0: After MPI_Bcast and before matrix multiplication.
+Process 1: After MPI_Bcast and before matrix multiplication.
+Process 2: After MPI_Bcast and before matrix multiplication.
+Process 5: After MPI_Bcast and before matrix multiplication.
+Process 6: After MPI_Bcast and before matrix multiplication.
+Process 4: After MPI_Bcast and before matrix multiplication.
+Process 8: After MPI_Bcast and before matrix multiplication.
+Process 7: After MPI_Bcast and before matrix multiplication.
+Process 3: After MPI_Bcast and before matrix multiplication.
+Process 6: After matrix multiplication.
+Process 6: Before MPI_Finalize.
+Process 1: After matrix multiplication.
+Process 1: Before MPI_Finalize.
+Process 3: After matrix multiplication.
+Process 3: Before MPI_Finalize.
+Process 5: After matrix multiplication.
+Process 5: Before MPI_Finalize.
+Process 7: After matrix multiplication.
+Process 7: Before MPI_Finalize.
+Process 8: After matrix multiplication.
+Process 8: Before MPI_Finalize.
+Process 0: After matrix multiplication.
+Process 0: Before MPI_Finalize.
+Process 4: After matrix multiplication.
+Process 4: Before MPI_Finalize.
+Process 9: After matrix multiplication.
+Process 9: Before MPI_Finalize.
+Process 2: After matrix multiplication.
+Process 2: Before MPI_Finalize.
+Process 6: After MPI_Finalize.
+Process 8: After MPI_Finalize.
+Process 5: After MPI_Finalize.
+Process 1: After MPI_Finalize.
+Process 0: After MPI_Finalize.
+Process 7: After MPI_Finalize.
+Process 3: After MPI_Finalize.
+Process 9: After MPI_Finalize.
+Process 4: After MPI_Finalize.
+Process 2: After MPI_Finalize.
